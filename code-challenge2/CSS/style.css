@@ -1,0 +1,25 @@
+body{
+    background-color: powderblue;
+}
+.animals{
+    display: flex;
+}
+.animals .list{
+    width: 20%;
+    background-color: gray;
+    opacity: 0.5;
+    color: white;
+}
+.animals .details{
+    width: 50%;
+   
+}
+
+.animals .details .image{
+    height: 50px;
+    width: 50px;
+
+}
+h1{
+    color:blue;
+}

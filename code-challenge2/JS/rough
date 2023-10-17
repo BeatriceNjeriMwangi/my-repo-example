@@ -1,0 +1,151 @@
+Event Listener: When the DOM content is fully loaded, it calls the fetchAndListAnimals function.
+
+fetchAndListAnimals Function:
+
+It fetches a list of animals from "http://localhost:3000/characters".
+When the data is retrieved, it maps through the array of animals and creates an array of animal names.
+It dynamically creates an HTML list with each animal's name as a list item and assigns the animal's name as the list item's id.
+It attaches a click event listener to each list item. When an animal's name is clicked, it calls the fetchAndListAnimal function with the clicked animal's name as input.
+fetchAndListAnimal Function:
+
+It fetches the animal data again from "http://localhost:3000/characters".
+It finds the specific animal object in the data whose name matches the input.
+It updates the src attribute of an HTML element with the id "image" to display the animal's image.
+It updates the inner HTML of an element with the id "votes" to display the number of votes for that animal.
+A couple of things to note:
+
+The code assumes that the server at "http://localhost:3000/characters" responds with JSON data containing an array of objects, each representing an animal with properties like name, image, and votes.
+
+There is an issue in the listHtml assignment inside the fetchAndListAnimals function. The concatenation of the <li> elements should be done with string concatenation, not as a JSX-style expression. Modify it like this:
+
+javascript
+Copy code
+listHtml += `<li id="${animal}">${animal}</li>`;
+This will correctly concatenate the HTML string.
+
+Make sure that the server at "http://localhost:3000/characters" is configured to handle requests and respond with the expected JSON data for this code to work properly.
+Remember, the code provided will work assuming the API endpoint returns the expected data format, and there are corresponding HTML elements with the ids "list", "image", and "votes" in your HTML file.
+document.addEventListener("DOMContentLoaded", function () {
+    let form = document.querySelector('form');
+    let todoList =  document.getElementById("todo-list");
+
+    fetch('http://localhost:3000/characters')
+    
+        .then(res=> res.json())
+        .then(todos => {
+            todos.forEach(todo => {
+                let listItem = document.createElement('li');
+                listItem,innetText = todo.title;
+                todoList.appendChild(listItem);
+                
+            });
+        }
+//     fetchAndListAnimals();
+// });
+// //fetching element from the DOM
+// const fetchAndListAnimals = () => {
+//     fetch("http://localhost:3000/characters")
+//         .then((response) => response.json())
+//         .then((data) => {
+           
+//             const animals = data.map((animal) => animal.name);
+
+//             const element = document.getElementById("list");
+
+//             let listHtml = "";
+
+//             for (const animal of animals) {
+//                 listHtml += <li id="${animal}">${animal}</li>;
+//             }
+//             element.innerHTML = listHtml;
+           
+//             for (const animal of animals) {
+//                 document.getElementById(animal).addEventListener("click", function () {
+//                     fetchAndListAnimal(animal)
+//                 });                
+//             }
+//         })
+//         //handles all errors
+//         .catch((error) => console.log(error));
+// };
+
+// const fetchAndListAnimal = (input) => {
+//     fetch("http://localhost:3000/characters")
+//         .then((response) => response.json())
+//         .then((data) => {
+//             const animal = data.find((animal) => animal.name === input);
+//             console.log(animal)
+//             document.getElementById("image").src = animal.image;
+//             document.getElementById("votes").innerHTML = animal.votes;
+
+//         })
+//         .catch((error) => console.log(error));
+// };
+
+
+
+
+
+// document.addEventListener("DOMContentLoaded",function(){
+//     const fetchListAnimals=()=>{
+//         fetch("http://localhost:3000/characters")
+//             .then((res=>res.json())
+//             .then((data=>{
+//                 const animals = data.map((animal)=>animal.name);
+//                 const element=document.getElementById("list");
+
+//                 let htmlList="";
+
+//                 for(const animal of animals){
+//                     htmlList+=<li id"${animal}">${animal}</li>;
+//                 }
+//                 element.innerHTML=htmlList;
+
+//                 for (const animal of animals) {
+//                     document.getElementById(animal).addEventListener("click", function () {
+//                         fetchAndListAnimal(animal)
+//                     });                
+//                 }
+//             })
+//             .catch((error) => console.log(error));
+//     };
+//     const fetchListAnimals=()=>{
+//         fetch("http://localhost:3000/characters")
+//             .then((res=>res.json())
+//             .then((data=>{
+//                 const animal=data.find((animal)=>animal.name===input);
+//                 console.log(animal)
+//                 document.getElementById("image").src=animal.image;
+//                 document.getElementById("votes").src=animal.votes;
+
+
+//             })
+//             .catch((error)=>console.log(error))))
+//     }
+// })
+// // let form = document.querySelector('form');
+//     let todoList = document.getElementById("todo-list");
+
+//     fetch('')
+    
+//         .then(res=> res.json())
+//         .then(todos => {
+//             todos.forEach(todo => {
+//                 let listItem = document.createElement('li');
+//                 listItem,innetText = todo.title;
+//                 todoList.appendChild(listItem);
+                
+//             });
+//         }
+//         //how to display data on the dom
+
+//     form.addEventListener('submit', (e) =>{
+//         e.preventDefault();
+//         let inputElem = document.getElementById("todo-text");
+        
+//         //console.log(inputElem.value);
+//         let listItem = document.createElement("li");
+//         listItem.innerHTML = inputElem.value;
+//         todoList.appendChild(listItem)
+
+//     })
