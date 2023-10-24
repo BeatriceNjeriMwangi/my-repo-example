@@ -1,7 +1,15 @@
 document.addEventListener("DOMContentLoaded", ()=>{
-    let bookList = ddocument.getElementById("book-list");
-    fetch('https://wolnelektury.pl/api/books/');
-        //.then(res=>res.json())
-
-
+    let bookList = document.getElementById("book-list");
+    fetch('https://wolnelektury.pl/api/books/')
+       .then(res => res.json()
+            .then(data=>{
+                data.forEach(book => {
+                    const markup= `<li>${book.name}</li>`;
+                    // let listItem = document.createElement('li');
+                    // listItem.innetText = data.title;
+                    // bookList.appendChild(listItem);
+                    
+                });
+            })
+       )
 })
