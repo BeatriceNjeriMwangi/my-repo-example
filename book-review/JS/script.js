@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
             .then(data=>{
                 data.forEach(book => {
                     const markup= `<li>${book.name}</li>`;
+
+                    document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
                     // let listItem = document.createElement('li');
                     // listItem.innetText = data.title;
                     // bookList.appendChild(listItem);
