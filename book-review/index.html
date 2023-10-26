@@ -12,25 +12,20 @@
   <h1>Books-Review!</h1>
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
             <img src="./images/hand-book-logo-illustration-art-background-43965136.png" alt="" width="100" height="94" class="d-inline-block align-text-top">
-            Book reviewers.
-          </a>
-        </div>
-      </nav>
+            
+      
+      </div>
+      
       <a class="navbar-brand">BOOKS-SEARCH</a>
       
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+    <input id="searchbar" onkeyup="search_book()" type="text"
+        name="search" placeholder="Search book..">
+      
     </div>
   </nav>
-  <div id="book-list">
-    <h2>List of Books</h2>
-    <ul >
+  <div class="container-fluid">
+    <ul id="book-list">
     
     </ul> 
 
