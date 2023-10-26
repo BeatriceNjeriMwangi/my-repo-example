@@ -171,7 +171,24 @@ document.addEventListener("DOMContentLoaded", ()=>{
             console.error('Error fetching data:', error);
         }));
 
-
+//Event listener for the comment form
+        const commentForms = document.querySelectorAll('.commentForm');
+        commentForms.forEach((form) => {
+          form.addEventListener('submit', function (event) {
+            event.preventDefault();
+  
+            const commentText = form.querySelector('.commentText').value;
+            if (commentText.trim() !== '') {
+              const commentDiv = document.createElement('div');
+              commentDiv.className = 'comment';
+              commentDiv.textContent = commentText;
+  
+              form.parentElement.querySelector('.comments').appendChild(commentDiv);
+  
+              form.querySelector('.commentText').value = '';
+            }
+          });
+        });
 
 }
 
